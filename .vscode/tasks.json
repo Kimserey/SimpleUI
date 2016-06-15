@@ -4,7 +4,7 @@
     "isShellCommand": true,
     "tasks": [
         {
-            "taskName": "produce-dist",
+            "taskName": "default",
             "isBuildCommand": true,
             "showOutput": "always",
             "isWatching": true
