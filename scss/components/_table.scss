@@ -1,0 +1,54 @@
+$cell-padding: 0.7em 1em;
+
+.table-card {
+    background-color: $white;
+    @include transition(0.5s);
+        
+    .table-title {
+        padding: 1em 0.6em;
+        font-size: x-large;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        
+        thead {
+            th {
+                padding: $cell-padding;
+                color: $grey;
+                border-bottom: 1px solid $grey;
+                text-align: left;
+                
+                &.right {
+                    text-align: right;
+                }
+            }
+        }
+        
+        tbody {
+            tr {
+                text-align: left;
+                border-top: 1px solid $grey-light;
+                border-bottom: 1px solid $grey-light;
+                
+                &:hover {
+                    cursor: pointer;
+                    background-color: $grey-very-light;
+                }
+            }
+
+            td {
+                padding: $cell-padding;
+                                
+                &.money {
+                    text-align: right;
+                }
+                
+                &.money:after {
+                    content: " GBP";
+                }
+            }
+        }
+    }   
+}

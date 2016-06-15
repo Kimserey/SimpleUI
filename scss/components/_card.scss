@@ -1,0 +1,91 @@
+.amount {
+    &:after {
+        content: ' GBP';
+    }
+}
+
+.card {
+    margin: 30px 50px;
+
+    .card-title {
+        padding: 10px;
+
+        .amount {
+            float: right;
+            
+            &:after {
+                content: " GBP";
+            }
+        }
+    }
+    
+    .card-content {
+        margin: 10px 0;
+        
+        .card-list-item {
+            background: $white;
+            position: relative;
+            width: 100%;
+            @include box-shadow(1px 1px 2px rgba(0,0,0,.1));
+            @include transition(
+                margin 0.2s ease-out,
+                width 0.2s ease-out,
+                left 0.2s ease-out);
+
+            &.active {
+                width: 103%;
+                margin: 30px -1.5%;
+                @include box-shadow(2px 2px 2px rgba(0,0,0,.3));
+                @include transition(
+                    margin 0.2s ease-in,
+                    width 0.2s ease-in,
+                    left 0.2s ease-in);
+
+                &:first-child {
+                    margin-top: 0;
+                }
+            }
+            
+            .card-list-item-header {
+                height: 3em;
+                border-bottom: 1px solid $grey-light;
+
+                .card-list-item-header-title {
+                    font-weight: 500;
+                    position: absolute;
+                    top: 1em;
+                    left: 1em;
+                }
+
+                .card-list-item-header-subtitle {
+                    position: absolute;
+                    top: 1em;
+                    right: 1em;
+                }
+            }
+
+            &:last-child {
+                border: none;
+            }
+            
+            .card-list-item-content {
+                opacity: 0;
+                visibility: hidden;
+                max-height: 0;
+                background: $white;
+                @include transition(
+                    max-height 0.3s ease-out,
+                    opacity 0.2s ease-out);
+
+                &.active {
+                    opacity: 1;
+                    visibility: visible;
+                    max-height: 100%;
+                    @include transition(
+                        max-height 0.3s ease-in,
+                        opacity 0.2s ease-in 0.2);
+                }
+            }
+        }
+    }
+}

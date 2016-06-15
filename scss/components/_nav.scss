@@ -1,0 +1,118 @@
+header {
+    position: fixed;
+    top: 0;
+    background-color: $white;
+    border-bottom: 1px solid $grey-light;
+    padding: 1em 3.5em;
+    font-size: large;
+    width: 100%;
+    z-index: 5;
+    
+    @include box-shadow(0 1px 0px rgba(0,0,0,.1));
+}
+
+nav {
+    dt {
+        font-weight: 500;
+        dd {
+            font-weight: 300;
+        }
+    }
+    
+    .nav-button {
+        border: none;
+        background-color: $white;
+        cursor: pointer;
+        position: fixed;
+        top: 1em;
+        font-size: large;
+        z-index: 5;
+    }
+    .nav-menu {
+        @extend .nav-button;
+        left: 1em;
+    }
+    
+    .nav-menu-right{
+        button {
+            @extend .nav-button;
+            right: 1em;
+        }
+        
+        .filter {
+            @include transition(0.1s);
+            @include box-shadow(1px 1px 2px rgba(0,0,0,.45));
+            
+            position: fixed;
+            padding:1em;
+            top: 2em;
+            right: 0;
+            background: white;
+            visibility: hidden;
+            opacity: 0;
+            z-index: 15;
+
+            &.show {
+                visibility: visible;
+                opacity: 1;
+                top: 3em;
+                right: 1em;
+            }
+            
+            ul {    
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                
+                li {
+                    padding: 0.5em;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    
+    #side-menu {
+        $width: 15em;
+        
+        position: fixed;
+        top: 0;
+        left: - $width;
+        width: $width;
+        background: $white;
+        overflow-y: scroll;
+        height: 100%;
+        z-index: 15;
+        
+        @include transition(0.5s);
+        
+        &.show {
+            left: 0;   
+        }
+        
+        .brand {
+            padding: 0.8em 0.6em;
+            font-size: x-large;
+            border-bottom: 1px solid $grey;
+        }
+        
+        dl {        
+            dt {
+                padding: 1em;
+            }
+            
+            dd {
+                a {
+                    display: block;
+                    padding: 0.5em;
+                    text-decoration: none;
+                    color: black;
+                    
+                    &:hover {
+                        color: $grey;
+                    }
+                }
+            }
+        }
+    }
+}

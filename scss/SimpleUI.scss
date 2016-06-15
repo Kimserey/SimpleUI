@@ -1,0 +1,31 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
+
+@import "libraries/font-awesome/font-awesome";
+
+@import "shared/colors";
+
+@import "mixins/transition";
+@import "mixins/box-shadow";
+
+@import "components/card";
+@import "components/mask";
+@import "components/nav";
+@import "components/table";
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #F7F7F7;
+    padding: 0;
+    margin: 0;
+    margin-top: 6em;
+    overflow-x: hidden;
+    
+    &.disable-scroll {
+        overflow-y: hidden;
+    }
+}
+
+#main {
+    position: relative;
+    @include transition(left 0.5s ease, top 1s ease, bottom 10s);
+}
