@@ -41,12 +41,8 @@ $cell-padding: 0.7em 1em;
             td {
                 padding: $cell-padding;
                                 
-                &.money {
+                &.amount {
                     text-align: right;
-                }
-                
-                &.money:after {
-                    content: " GBP";
                 }
             }
         }

@@ -8,8 +8,6 @@
     padding: 10px; }
     .card .card-title .amount {
       float: right; }
-      .card .card-title .amount:after {
-        content: " GBP"; }
   .card .card-content {
     margin: 10px 0; }
     .card .card-content .card-list-item {
@@ -212,10 +210,8 @@ nav #side-menu {
         background-color: #F7F7F7; }
     .table-card table tbody td {
       padding: 0.7em 1em; }
-      .table-card table tbody td.money {
+      .table-card table tbody td.amount {
         text-align: right; }
-      .table-card table tbody td.money:after {
-        content: " GBP"; }
 
 body {
   font-family: 'Roboto', sans-serif;
