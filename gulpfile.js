@@ -4,7 +4,7 @@ var sass = require('gulp-sass');
 var minifyCs = require('gulp-minify-css');
 var uglify = require('gulp-uglify');
 
-gulp.task('produce-dist', function() {
+gulp.task('default', function() {
     gulp.src('./scss/SimpleUI.scss')
         .pipe(sass())
         .pipe(gulp.dest("./css"));
