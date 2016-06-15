@@ -1,6 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
 .amount:after {
-  content: ' GBP'; }
+  content: ' EUR'; }
 
 .card {
   margin: 30px 50px; }
