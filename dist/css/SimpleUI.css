@@ -81,6 +81,9 @@
   -o-transition: max-height 0.3s ease-in, opacity 0.2s ease-in 0.2;
   transition: max-height 0.3s ease-in, opacity 0.2s ease-in 0.2; }
 
+.chart-card {
+  background-color: white; }
+
 #mask {
   opacity: 0;
   visibility: hidden;
