@@ -1,0 +1,94 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expenses</title>
+    <link rel="stylesheet" href="dist/css/SimpleUI.css">
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+    <script src="https://use.fontawesome.com/269e7d57ca.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.min.js"></script>
+    <script src="dist/js/SimpleUI.js"></script>
+</head>
+
+<body>
+    <header>
+        Expenses - Sorted per month
+    </header>
+
+    <nav>
+        <button id="side-menu-button" class="nav-menu" onclick="simpleUI.toggleSideMenu()">
+            <i class="fa fa-bars"></i>
+        </button>
+
+        <div id="side-menu">
+            <div class="brand">
+                Data expenses
+            </div>
+            <dl>
+                <dt>
+                    Expenses
+                </dt>
+                <dd>
+                    <a > Per month </a>
+                    <a > Per category </a>
+                </dd>
+                <dt>
+                    Shops
+                </dt>
+                <dd>
+                    <a> All shops</a>
+                </dd>
+            </dl>
+        </div>
+    </nav>
+    
+    <div id="mask" onclick="simpleUI.toggleSideMenu()"></div>
+    
+    <div class="card">
+        <div class="">
+            <canvas id="myChart" height="100%"></canvas>
+        </div>
+    </div>
+    
+    <script>
+        var ctx = document.getElementById("myChart");
+        
+        var makeChart = function(data) {
+            var lineChart = Chart.Line(ctx, {
+                type: 'line',
+                data: {
+                    labels: data.Labels,
+                    datasets: [
+                        {
+                            fill: false,
+                            pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                            pointHoverBorderColor: "rgba(220,220,220,1)",
+                            pointHoverBorderWidth: 4,
+                            data: data.Values
+                        }
+                    ]
+                },
+                options: {
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: data.Title
+                    }
+                }
+            });
+        }
+
+        $.ajax({
+            url: "http://172.16.81.128:9600/api/expenses/Date"
+        })
+        .done(function(data) {
+            makeChart(data);
+        });
+    </script>
+</body>
+</html>
