@@ -1,6 +1,7 @@
 <html lang="en">
 
-<head>
+<head> 
+    <!-- /SimpleUI/chart.html -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Expenses</title>
@@ -66,12 +67,20 @@
         $.ajax({
             url: "http://172.16.81.128:9600/api/expenses",
             success: function(data) {
-                var lineChart = Chart.Line(ctx, {
-                    type: 'line',
+                var lineChart = new Chart(ctx, {
+                    type: 'bar',
                     options: {
                         title: {
                             display: true,
                             text: data.Title
+                        },
+                        scales: {
+                            xAxes: [{
+                                stacked: true
+                            }],
+                            yAxes: [{
+                                stacked: true
+                            }]
                         }
                     },
                     data: {
@@ -81,8 +90,7 @@
                             .DataSeriesList
                             .map(function(d) {
                                 return {
-                                    borderColor: randomColor(0.5),
-                                    fill: false,
+                                    backgroundColor: randomColor(0.8),
                                     label: d.Title,
                                     data: d.Values
                                 };
