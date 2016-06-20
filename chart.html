@@ -50,55 +50,15 @@
     
     <div class="card">
         <div class="chart-card">
-            <canvas id="myChart" height="100%"></canvas>
+            <canvas id="allexpenses" height="100%"></canvas>
         </div>
     </div>
-    
-    <script>
-        var ctx = document.getElementById("myChart");
 
-        var randomColor = function(opacity) {
-            var randomColorFactor = function() {
-                return Math.round(Math.random() * 255);
-            };
-            return 'rgba(' + randomColorFactor() + ',' + randomColorFactor() + ',' + randomColorFactor() + ',' + (opacity || '.3') + ')';
-        };
+    <div class="card">
+        <div id="count-charts" class="chart-card">
+        </div>
+    </div>
 
-        $.ajax({
-            url: "http://172.16.81.128:9600/api/expenses",
-            success: function(data) {
-                var lineChart = new Chart(ctx, {
-                    type: 'bar',
-                    options: {
-                        title: {
-                            display: true,
-                            text: data.Title
-                        },
-                        scales: {
-                            xAxes: [{
-                                stacked: true
-                            }],
-                            yAxes: [{
-                                stacked: true
-                            }]
-                        }
-                    },
-                    data: {
-                        labels: data.Labels,
-                        datasets: 
-                            data
-                            .DataSeriesList
-                            .map(function(d) {
-                                return {
-                                    backgroundColor: randomColor(0.8),
-                                    label: d.Title,
-                                    data: d.Values
-                                };
-                            })
-                    }
-                });
-            }
-        });
-    </script>
+    <script src="js/SimpleUI_chart.js"></script>
 </body>
 </html>
