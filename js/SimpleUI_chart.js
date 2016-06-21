@@ -89,3 +89,39 @@ $.ajax({
         });
     }
 });
+
+$.ajax({
+    url: "http://172.16.81.128:9600/api/dayspan",
+    success: function(data) {
+        var main = $("#count-charts");
+        $.each(data.DataSeriesList, function(index, series) {
+            var el = $("<canvas height='100%'/>");
+            main.append(el);
+            var barChart = new Chart(el, {
+                type: 'bar',
+                options: {
+                    title: {
+                        display: true,
+                        text: series.Title
+                    },
+                    scales: {
+                        xAxes: [{
+                            stacked: true
+                        }],
+                        yAxes: [{
+                            stacked: true
+                        }]
+                    }
+                },
+                data: {
+                    labels: data.Labels,
+                    datasets: [{
+                        backgroundColor: randomColor(0.8),
+                        label: series.Title, 
+                        data: series.Values
+                    }]
+                }
+            });
+        });
+    }
+});
