@@ -2,22 +2,6 @@
  For testing purposes only all the code here will go to the main application
 */
 
-function slugify(text) {
-  return text.toString().toLowerCase()
-    .replace(/\s+/g, '-')           // Replace spaces with -
-    .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
-    .replace(/\-\-+/g, '-')         // Replace multiple - with single -
-    .replace(/^-+/, '')             // Trim - from start of text
-    .replace(/-+$/, '');            // Trim - from end of text
-}
-
-function randomColor(opacity) {
-    var randomColorFactor = function() {
-        return Math.round(Math.random() * 255);
-    };
-    return 'rgba(' + randomColorFactor() + ',' + randomColorFactor() + ',' + randomColorFactor() + ',' + (opacity || '.3') + ')';
-};
-
 $.ajax({
     url: "http://172.16.81.128:9600/api/expenses",
     success: function(data) {
@@ -70,37 +54,75 @@ $.ajax({
 });
 
 $.ajax({
-    url: "http://172.16.81.128:9600/api/dayspan",
+    url: "http://172.16.81.128:9600/api/supermarket",
     success: function(data) {
-        var main = $("#count-charts");
-        $.each(data.DataSeriesList, function(index, series) {
-            var el = $("<canvas height='100%'/>");
-            main.append(el);
-            var barChart = new Chart(el, {
-                type: 'bar',
-                options: {
-                    title: {
-                        display: true,
-                        text: series.Title
-                    },
-                    scales: {
-                        xAxes: [{
-                            stacked: true
-                        }],
-                        yAxes: [{
-                            stacked: true
-                        }]
-                    }
+        $('#supermarket').highcharts({
+            chart: {
+                type: "line",
+                zoomType: 'xy'
+            },
+            title: {
+                text: data.Title
+            },
+            xAxis: {
+                categories: data.Labels
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Amount'
                 },
-                data: {
-                    labels: data.Labels,
-                    datasets: [{
-                        backgroundColor: randomColor(0.8),
-                        label: series.Title, 
-                        data: series.Values
-                    }]
-                }
-            });
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            series: data.DataSeriesList.map(function(series) {
+                return {
+                    name: series.Title,
+                    data: series.Values.map(function(expense) { 
+                        return Math.abs(expense.Amount); 
+                    })
+                };    
+            })
+        });
+    }
+});
+
+$.ajax({
+    url: "http://172.16.81.128:9600/api/smoothsupermarket",
+    success: function(data) {
+        $('#smoothsupermarket').highcharts({
+            chart: {
+                type: "line",
+                zoomType: 'xy'
+            },
+            title: {
+                text: data.Title
+            },
+            xAxis: {
+                categories: data.Labels
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Amount'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            series: data.DataSeriesList.map(function(series) {
+                return {
+                    name: series.Title,
+                    data: series.Values.map(function(expense) { 
+                        return Math.abs(expense.Amount); 
+                    })
+                };    
+            })
         });
     }
 });
