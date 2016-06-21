@@ -11,59 +11,17 @@
     <script src="https://use.fontawesome.com/269e7d57ca.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="dist/js/SimpleUI.js"></script>
 </head>
 
 <body>
-    <header>
-        Expenses - Sorted per month
-    </header>
-
-    <nav>
-        <button id="side-menu-button" class="nav-menu" onclick="simpleUI.toggleSideMenu()">
-            <i class="fa fa-bars"></i>
-        </button>
-
-        <div id="side-menu">
-            <div class="brand">
-                Data expenses
-            </div>
-            <dl>
-                <dt>
-                    Expenses
-                </dt>
-                <dd>
-                    <a > Per month </a>
-                    <a > Per category </a>
-                </dd>
-                <dt>
-                    Shops
-                </dt>
-                <dd>
-                    <a> All shops</a>
-                </dd>
-            </dl>
-        </div>
-    </nav>
-    
-    <div id="mask" onclick="simpleUI.toggleSideMenu()"></div>
-    
     <div class="card">
         <div class="chart-card">
-            <canvas id="allexpenses" height="100%"></canvas>
+            <div id="expenses" style="min-width: 310px; height: 600px; margin: 0 auto"></div>
         </div>
     </div>
 
-    <div class="card">
-        <div id="count-charts" class="chart-card">
-        </div>
-    </div>
-
-    <div class="card">
-        <div id="count-charts" class="chart-card">
-        </div>
-    </div>
-    
     <script src="js/SimpleUI_chart.js"></script>
 </body>
 </html>

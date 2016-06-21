@@ -21,71 +21,50 @@ function randomColor(opacity) {
 $.ajax({
     url: "http://172.16.81.128:9600/api/expenses",
     success: function(data) {
-        var barChart = new Chart(document.getElementById("allexpenses"), {
-            type: 'bar',
-            options: {
+        $('#expenses').highcharts({
+            chart: {
+                type: 'column',
+                zoomType: 'xy'
+            },
+            title: {
+                text: data.Title
+            },
+            xAxis: {
+                categories: data.Labels
+            },
+            yAxis: {
+                min: 0,
                 title: {
-                    display: true,
-                    text: data.Title
-                },
-                scales: {
-                    xAxes: [{
-                        stacked: true
-                    }],
-                    yAxes: [{
-                        stacked: true
-                    }]
+                    text: 'Total amount'
                 }
             },
-            data: {
-                labels: data.Labels,
-                datasets: 
-                    data
-                    .DataSeriesList
-                    .map(function(d) {
+            legend: {
+                align: 'right',
+                x: -30,
+                verticalAlign: 'top',
+                y: 25,
+                floating: true,
+                backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'white',
+                borderColor: '#CCC',
+                borderWidth: 1,
+                shadow: false
+            },
+            tooltip: {
+                pointFormat: '{series.name}: {point.y} GBP<br/>Total: {point.stackTotal} GBP'
+            },
+            plotOptions: {
+                column: {
+                    stacking: 'normal'
+                }
+            },
+            series: 
+                data.DataSeriesList
+                    .map(function(series) {
                         return {
-                            backgroundColor: randomColor(0.8),
-                            label: d.Title,
-                            data: d.Values
+                            name: series.Title,
+                            data: series.Values
                         };
                     })
-            }
-        });
-    }
-});
-
-$.ajax({
-    url: "http://172.16.81.128:9600/api/levelcounts",
-    success: function(data) {
-        var main = $("#count-charts");
-        $.each(data.DataSeriesList, function(index, series) {
-            var el = $("<canvas height='100%'/>");
-            main.append(el);
-            var barChart = new Chart(el, {
-                type: 'bar',
-                options: {
-                    title: {
-                        display: true,
-                        text: series.Title
-                    },
-                    scales: {
-                        xAxes: [{
-                            stacked: true
-                        }],
-                        yAxes: [{
-                            stacked: true
-                        }]
-                    }
-                },
-                data: {
-                    labels: data.Labels,
-                    datasets: [{
-                        backgroundColor: randomColor(0.8),
-                        label: series.Title, 
-                        data: series.Values
-                    }]
-                }
-            });
         });
     }
 });
