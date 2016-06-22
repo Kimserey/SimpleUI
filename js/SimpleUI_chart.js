@@ -200,8 +200,9 @@ $.getJSON('http://172.16.81.128:9600/api/binaryexpenses',
                 data: data.map(function(x) { return x[2]; }),
                 step: true
             }]
-    });
-});
+        });
+    }
+);
 
 $.getJSON('http://172.16.81.128:9600/api/expending', 
     function (data) {
@@ -225,5 +226,49 @@ $.getJSON('http://172.16.81.128:9600/api/expending',
                 name: 'Supermarket',
                 data: data.map(function(d) { return d[1]; })
             }]
-    });
-});
+        });
+    }
+);
+
+$.getJSON('http://172.16.81.128:9600/api/ratio', 
+    function (data) {
+        function makeChart(chartData) {
+            return {
+                chart: {            
+                    type: 'pie'
+                },
+                title: {
+                    text: chartData[0]
+                },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.4f}%</b>'
+                },
+                plotOptions: {
+                    pie: {
+                        dataLabels: {
+                            enabled: true,
+                            format: '<b>{point.name}</b>: {point.percentage:.2f} %'
+                        }
+                    }
+                },
+                series: [{
+                    data: chartData[1].map(function(category) {
+                        return {
+                            name: category[0],
+                            y: category[1]
+                        };
+                    })
+                }]
+            };
+        }
+
+        var el = $('#test');
+        data.forEach(function(data) {
+            var chart = $('<div style="width:50%; float:left;">');
+            el.append(chart);
+            chart.ready(function() {
+                chart.highcharts(makeChart(data));
+            });
+        });
+    }
+);
