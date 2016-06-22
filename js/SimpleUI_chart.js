@@ -2,6 +2,7 @@
  For testing purposes only all the code here will go to the main application
 */
 
+//http://172.16.81.128:9600/api/expenses
 $.ajax({
     url: "http://172.16.81.128:9600/api/expenses",
     success: function(data) {
@@ -53,6 +54,7 @@ $.ajax({
     }
 });
 
+//http://172.16.81.128:9600/api/supermarket
 $.ajax({
     url: "http://172.16.81.128:9600/api/supermarket",
     success: function(data) {
@@ -90,6 +92,7 @@ $.ajax({
     }
 });
 
+//http://172.16.81.128:9600/api/smoothsupermarket
 $.ajax({
     url: "http://172.16.81.128:9600/api/smoothsupermarket",
     success: function(data) {
@@ -127,6 +130,7 @@ $.ajax({
     }
 });
 
+//http://172.16.81.128:9600/api/dayspan
 $.ajax({
     url: "http://172.16.81.128:9600/api/dayspan",
     success: function(data) {
