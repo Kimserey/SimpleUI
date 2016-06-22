@@ -2,9 +2,7 @@
  For testing purposes only all the code here will go to the main application
 */
 
-//http://172.16.81.128:9600/api/expenses
-$.getJSON(
-    "http://172.16.81.128:9600/api/expenses",
+$.getJSON("http://172.16.81.128:9600/api/expenses",
     function(data) {
         $('#expenses').highcharts({
             chart: {
@@ -54,9 +52,7 @@ $.getJSON(
     }
 );
 
-//http://172.16.81.128:9600/api/supermarket
-$.getJSON(
-    "http://172.16.81.128:9600/api/supermarket",
+$.getJSON("http://172.16.81.128:9600/api/supermarket",
     function(data) {
         $('#supermarket').highcharts({
             chart: {
@@ -92,9 +88,7 @@ $.getJSON(
     }
 );
 
-//http://172.16.81.128:9600/api/smoothsupermarket
-$.getJSON(
-    "http://172.16.81.128:9600/api/smoothsupermarket",
+$.getJSON("http://172.16.81.128:9600/api/smoothsupermarket",
     function(data) {
         $('#smoothsupermarket').highcharts({
             chart: {
@@ -130,9 +124,7 @@ $.getJSON(
     }
 );
 
-//http://172.16.81.128:9600/api/dayspan
-$.getJSON(
-    "http://172.16.81.128:9600/api/dayspan",
+$.getJSON("http://172.16.81.128:9600/api/dayspan",
     function(data) {
         $('#dayspan').highcharts({
             chart: {
