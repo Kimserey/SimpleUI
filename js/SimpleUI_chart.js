@@ -27,7 +27,6 @@ $.getJSON('http://172.16.81.128:9600/api/expenses',
                 verticalAlign: 'top',
                 y: 25,
                 floating: true,
-                backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'white',
                 borderColor: '#CCC',
                 borderWidth: 1,
                 shadow: false
@@ -200,6 +199,31 @@ $.getJSON('http://172.16.81.128:9600/api/binaryexpenses',
                 name: 'Supermarket expense',
                 data: data.map(function(x) { return x[2]; }),
                 step: true
+            }]
+    });
+});
+
+$.getJSON('http://172.16.81.128:9600/api/expending', 
+    function (data) {
+        $('#expendingmean').highcharts({
+            chart: {
+                type: 'spline',
+                zoomType: 'xy'
+            },
+            title: {
+                text: 'Supermarket - Expending mean'
+            },
+            xAxis: {
+                categories: data.map(function(d) { return new Date(d[0]).toDateString(); })
+            },
+            yAxis: {
+                title: {
+                    text: 'Amount'
+                }
+            },
+            series: [{
+                name: 'Supermarket',
+                data: data.map(function(d) { return d[1]; })
             }]
     });
 });
