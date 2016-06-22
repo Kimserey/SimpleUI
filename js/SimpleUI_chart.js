@@ -2,7 +2,7 @@
  For testing purposes only all the code here will go to the main application
 */
 
-$.getJSON("http://172.16.81.128:9600/api/expenses",
+$.getJSON('http://172.16.81.128:9600/api/expenses',
     function(data) {
         $('#expenses').highcharts({
             chart: {
@@ -52,7 +52,7 @@ $.getJSON("http://172.16.81.128:9600/api/expenses",
     }
 );
 
-$.getJSON("http://172.16.81.128:9600/api/supermarket",
+$.getJSON('http://172.16.81.128:9600/api/supermarket',
     function(data) {
         $('#supermarket').highcharts({
             chart: {
@@ -88,11 +88,11 @@ $.getJSON("http://172.16.81.128:9600/api/supermarket",
     }
 );
 
-$.getJSON("http://172.16.81.128:9600/api/smoothsupermarket",
+$.getJSON('http://172.16.81.128:9600/api/smoothsupermarket',
     function(data) {
         $('#smoothsupermarket').highcharts({
             chart: {
-                type: "spline",
+                type: 'spline',
                 zoomType: 'xy'
             },
             title: {
@@ -124,7 +124,7 @@ $.getJSON("http://172.16.81.128:9600/api/smoothsupermarket",
     }
 );
 
-$.getJSON("http://172.16.81.128:9600/api/dayspan",
+$.getJSON('http://172.16.81.128:9600/api/dayspan',
     function(data) {
         $('#dayspan').highcharts({
             chart: {
@@ -175,3 +175,31 @@ $.getJSON("http://172.16.81.128:9600/api/dayspan",
         });
     }
 );
+
+$.getJSON('http://172.16.81.128:9600/api/binaryexpenses', 
+    function (data) {
+        $('#binaryexpenses').highcharts({
+            title: {
+                text: 'Supermarket - Expense'
+            },
+            plotOptions: {
+                line: {
+                    marker: {
+                        enabled: false
+                    }
+                }
+            },
+            xAxis: {
+                categories: data.map(function(x) { return (new Date(x[0])).toDateString(); })
+            },
+            yAxis: {
+              min: 0,
+              max: 1
+            },
+            series: [{
+                name: 'Supermarket expense',
+                data: data.map(function(x) { return x[2]; }),
+                step: true
+            }]
+    });
+});
