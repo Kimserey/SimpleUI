@@ -3,9 +3,9 @@
 */
 
 //http://172.16.81.128:9600/api/expenses
-$.ajax({
-    url: "http://172.16.81.128:9600/api/expenses",
-    success: function(data) {
+$.getJSON(
+    "http://172.16.81.128:9600/api/expenses",
+    function(data) {
         $('#expenses').highcharts({
             chart: {
                 type: 'column',
@@ -52,15 +52,15 @@ $.ajax({
                     })
         });
     }
-});
+);
 
 //http://172.16.81.128:9600/api/supermarket
-$.ajax({
-    url: "http://172.16.81.128:9600/api/supermarket",
-    success: function(data) {
+$.getJSON(
+    "http://172.16.81.128:9600/api/supermarket",
+    function(data) {
         $('#supermarket').highcharts({
             chart: {
-                type: "line",
+                type: "spline",
                 zoomType: 'xy'
             },
             title: {
@@ -90,15 +90,15 @@ $.ajax({
             })
         });
     }
-});
+);
 
 //http://172.16.81.128:9600/api/smoothsupermarket
-$.ajax({
-    url: "http://172.16.81.128:9600/api/smoothsupermarket",
-    success: function(data) {
+$.getJSON(
+    "http://172.16.81.128:9600/api/smoothsupermarket",
+    function(data) {
         $('#smoothsupermarket').highcharts({
             chart: {
-                type: "line",
+                type: "spline",
                 zoomType: 'xy'
             },
             title: {
@@ -128,12 +128,12 @@ $.ajax({
             })
         });
     }
-});
+);
 
 //http://172.16.81.128:9600/api/dayspan
-$.ajax({
-    url: "http://172.16.81.128:9600/api/dayspan",
-    success: function(data) {
+$.getJSON(
+    "http://172.16.81.128:9600/api/dayspan",
+    function(data) {
         $('#dayspan').highcharts({
             chart: {
                 type: 'scatter',
@@ -182,4 +182,4 @@ $.ajax({
             }]
         });
     }
-});
+);
