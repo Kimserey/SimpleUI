@@ -1,5 +1,5 @@
 /*
- For testing purposes only all the code here will go to the main application
+ For testing purposes only all the code here will go to the DataExpense application
 */
 
 $.getJSON('http://172.16.81.128:9600/api/expenses',
