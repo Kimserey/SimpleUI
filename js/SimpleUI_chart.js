@@ -241,7 +241,7 @@ $.getJSON('http://172.16.81.128:9600/api/ratio',
                     text: chartData[0]
                 },
                 tooltip: {
-                    pointFormat: '{series.name}: <b>{point.percentage:.4f}%</b>'
+                    pointFormat: '<b>{point.percentage:.4f}%</b>'
                 },
                 plotOptions: {
                     pie: {
@@ -252,23 +252,21 @@ $.getJSON('http://172.16.81.128:9600/api/ratio',
                     }
                 },
                 series: [{
-                    data: chartData[1].map(function(category) {
-                        return {
-                            name: category[0],
-                            y: category[1]
-                        };
-                    })
+                    data: chartData[1]
+                            .map(function(category) {
+                                return {
+                                    name: category[0],
+                                    y: category[1]
+                                };
+                            })
                 }]
             };
         }
 
-        var el = $('#test');
         data.forEach(function(data) {
-            var chart = $('<div style="width:50%; float:left;">');
-            el.append(chart);
-            chart.ready(function() {
-                chart.highcharts(makeChart(data));
-            });
+            $('<div style="width:50%; float:left;">')
+                .highcharts(makeChart(data))
+                .appendTo($('#ratios'));
         });
     }
 );
