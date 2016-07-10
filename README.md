@@ -21,3 +21,7 @@ Support the following elements.
 ## 4. Side menu
 
 ![sidemenu](https://raw.githubusercontent.com/Kimserey/SimpleUI/master/img/sidemenu.png)
+
+## 5. Chart tabs
+
+![tabs](https://raw.githubusercontent.com/Kimserey/SimpleUI/master/img/tabs.png)

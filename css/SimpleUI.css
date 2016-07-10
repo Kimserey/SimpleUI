@@ -68,6 +68,37 @@
           -ms-transition: max-height 0.3s ease-in, opacity 0.2s ease-in 0.2;
           -o-transition: max-height 0.3s ease-in, opacity 0.2s ease-in 0.2;
           transition: max-height 0.3s ease-in, opacity 0.2s ease-in 0.2; }
+    .card .card-content .card-tabs {
+      margin: 1em 0; }
+      .card .card-content .card-tabs ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden; }
+        .card .card-content .card-tabs ul li {
+          float: left;
+          padding: 1em;
+          background: #f1ebeb;
+          font-weight: 300; }
+          .card .card-content .card-tabs ul li.active {
+            background: white; }
+          .card .card-content .card-tabs ul li:not(.active):hover {
+            cursor: pointer; }
+      .card .card-content .card-tabs .tab-content {
+        position: relative; }
+        .card .card-content .card-tabs .tab-content .tab {
+          position: absolute;
+          width: 100%;
+          left: 0;
+          opacity: 0;
+          background: white;
+          -webkit-transition: 0.2s;
+          -moz-transition: 0.2s;
+          -ms-transition: 0.2s;
+          -o-transition: 0.2s;
+          transition: 0.2s; }
+          .card .card-content .card-tabs .tab-content .tab.active {
+            opacity: 1; }
 
 .chart-card {
   -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);

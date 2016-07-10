@@ -77,5 +77,48 @@
                 }
             }
         }
+
+        .card-tabs {
+            margin: 1em 0;
+
+            ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+
+                li {
+                    float: left;
+                    padding: 1em;
+                    background: #f1ebeb;
+                    font-weight: 300;
+
+                    &.active {
+                        background: white;
+                    }
+
+                    &:not(.active):hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            .tab-content{
+                position: relative;
+
+                .tab {
+                    position: absolute;
+                    width: 100%;
+                    left:0;
+                    opacity: 0;
+                    background: white;
+                    @include transition(0.2s);
+
+                    &.active {
+                        opacity: 1;
+                    }
+                }
+            }            
+        }
     }
 }

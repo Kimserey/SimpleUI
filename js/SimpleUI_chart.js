@@ -204,9 +204,9 @@ $.getJSON('http://172.16.81.128:9600/api/binaryexpenses',
     }
 );
 
-$.getJSON('http://172.16.81.128:9600/api/expending', 
+$.getJSON('http://172.16.81.128:9600/api/expanding', 
     function (data) {
-        $('#expendingmean').highcharts({
+        $('#expandingmean').highcharts({
             chart: {
                 type: 'spline',
                 zoomType: 'xy'

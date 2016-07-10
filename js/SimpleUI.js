@@ -51,10 +51,23 @@ var simpleUI = function ($) {
             showMenu();
         }
     };
+
+    var toggleTab = function(el) {
+        var $this = $(el);
+        var $thisContent = 
+            $this.parent().next().children('#'+ $this.data('target'));
+        var tab = $this.add($thisContent);
+
+        if (!$this.hasClass('active')) {
+            tab.siblings().removeClass('active');
+            tab.addClass('active');
+        }
+    }
     
 
     return {
         toggleCard: toggleCard,
-        toggleSideMenu: toggleSideMenu
+        toggleSideMenu: toggleSideMenu,
+        toggleTab: toggleTab
     };
 }(jQuery);
