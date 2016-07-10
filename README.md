@@ -4,7 +4,9 @@ Setup with gulp and Visual studio code.
 
 ⇧⌘B to run default task to compile SCSS.
 
-Support the following elements.
+Blog post [https://kimsereyblog.blogspot.co.uk/2016/06/keep-your-ui-framework-up-to-date-for.html](https://kimsereyblog.blogspot.co.uk/2016/06/keep-your-ui-framework-up-to-date-for.html)
+
+Support the following elements:
 
 ## 1. List
 
